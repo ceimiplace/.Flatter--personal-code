@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 50vw;
+        margin-inline: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>
+        Hi, i wrote here the code that i created to "pull" out the values of
+        multi-neste arrays.It can work for single elements and nested arrays, it
+        can go 100 levels deep. The method will pull out thee values. Im very
+        excited for doing this exercise. I will let a random array and the code
+        so you can try.
+      </p>
+      <p>
+        I know there is <code>Array.flat()</code>, but i wanted to replace that
+        using recursion
+      </p>
+      <h2>I call it: <code>flatter()</code></h2>
+      <code>
+        let denis = [ [1, 2], [3, 4], [5, 6], [7, [8, 9]], 10,11];
+        <br />let newarray = []; <br />
+        function flatter(tres) {<br />
+        if (Array.isArray(tres)) { <br />tres.forEach((elem) => {<br />
+        if (!Array.isArray(elem)) {<br />
+        newarray.push(elem); } else {<br />
+        elem.forEach((eli) => {<br />
+        flatter(eli);<br />
+        }); <br />}<br />
+        });<br />
+        } <br />else { newarray.push(tres); } }
+      </code>
+    </div>
+
+    <script>
+      let denis = [[1, 2], [3, 4], [5, 6], [7, [8, 9]], 10, 11];
+      let newarray = [];
+
+      function flatter(tres) {
+        if (Array.isArray(tres)) {
+          tres.forEach((elem) => {
+            if (!Array.isArray(elem)) {
+              newarray.push(elem);
+            } else {
+              elem.forEach((eli) => {
+                flatter(eli);
+              });
+            }
+          });
+        } else {
+          newarray.push(tres);
+        }
+      }
+    </script>
+  </body>
+</html>
